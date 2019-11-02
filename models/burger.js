@@ -11,3 +11,5 @@ const burger = {
         orm.updateOne("burgers", "devoured", updateVal, res => callback(res));
     }
 }
+
+module.exports = burger;
