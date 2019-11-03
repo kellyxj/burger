@@ -7,7 +7,7 @@ const burger = {
     create: function(name, callback) {
         orm.insertOne("burgers", ["burger_name"], [name], res => callback(res));
     },
-    update: function(updateVal, id) {
+    update: function(updateVal, id, callback) {
         orm.updateOne("burgers", "devoured", updateVal, id, res =>
             callback(res)
         );
