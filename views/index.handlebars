@@ -26,3 +26,31 @@
     <textarea name="" id="burgerEntry"></textarea>
     <button id="burgerSubmit">Submit</button>
 </form>
+
+<script type="text/javascript">
+    $(document).ready(() => {
+        $(".eatButton").on("click", (event) => {
+            const id = $(this).attr("data-id");
+            $.ajax("/api/burgers/" + id, {
+                type: "PUT"
+            }).then(() => {
+                console.log("Updated id: " + id);
+                location.reload();
+            })
+        })
+        $("#burgerSubmit").on("click", (event) => {
+            event.preventDefault();
+            const burgerName = $("#burgerEntry").val().trim();
+            $.ajax("/api/burgers", {
+                type: "POST",
+                data: {
+                    name: burgerName
+                }
+            }).then(() => {
+                console.log("New burger added");
+                location.reload();
+            })
+        })
+    })
+
+</script>
