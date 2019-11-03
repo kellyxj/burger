@@ -19,7 +19,7 @@ router.post("/api/burgers", (req, res) => {
 });
 
 router.put("/api/burgers/:id", (req, res) => {
-    burger.update(true, req.params.id, result => {
+    burger.update(1, req.params.id, result => {
         res.json({ id: result.id });
     });
 });

@@ -29,7 +29,7 @@ const orm = {
     updateOne: function(table, updateCol, updateVal, id, callback) {
         connection.query(
             "UPDATE ?? SET ?? = ? WHERE id = ?",
-            [table, updateCol, updateVal, id],
+            [table, updateCol, updateVal, parseInt(id)],
             (err, result) => {
                 if (err) throw err;
                 callback(result);

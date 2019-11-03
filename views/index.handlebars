@@ -29,15 +29,7 @@
 
 <script type="text/javascript">
     $(document).ready(() => {
-        $(".eatButton").on("click", (event) => {
-            const id = $(this).attr("data-id");
-            $.ajax("/api/burgers/" + id, {
-                type: "PUT"
-            }).then(() => {
-                console.log("Updated id: " + id);
-                location.reload();
-            })
-        })
+        $(".eatButton").on("click", handlePut);
         $("#burgerSubmit").on("click", (event) => {
             event.preventDefault();
             const burgerName = $("#burgerEntry").val().trim();
@@ -52,5 +44,15 @@
             })
         })
     })
+
+    function handlePut() {
+        const id = $(this).attr("data-id");
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT"
+        }).then(() => {
+            console.log("Updated id: " + id);
+            location.reload();
+        })
+    }
 
 </script>
