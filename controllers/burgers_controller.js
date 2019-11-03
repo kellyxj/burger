@@ -4,18 +4,11 @@ const burger = require("../models/burger.js");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    //TODO: get all burgers. Split the array of burgers into devoured and not devoured. Render to index.
     burger.all(allBurgers => {
-        const eatenBurgers = [];
-        const uneatenBurgers = [];
-        for (const sandwich of allBurgers) {
-            if (sandwich.devoured) {
-                eatenBurgers.push(sandwich);
-            } else {
-                uneatenBurgers.push(sandwich);
-            }
-        }
-        res.render("index", eatenBurgers, uneatenBurgers);
+        hbsObj = {
+            burgers: allBurgers
+        };
+        res.render("index", hbsObj);
     });
 });
 
